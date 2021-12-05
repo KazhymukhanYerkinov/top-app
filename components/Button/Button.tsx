@@ -17,5 +17,5 @@ export const Button = ({ appearance, arrow = 'none', children, className, ...pro
         <ArrowIcon />
       </span> }
     </button>
-  )
-}
+  );
+};

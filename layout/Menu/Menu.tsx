@@ -13,9 +13,6 @@ export const Menu = (): JSX.Element => {
   const router = useRouter();
   const { menu, firstCategory, setMenu } = React.useContext(AppContext);
 
-  console.log(menu);
-  
-
   const openSecondLevel = (secondCategory: string) => {
     setMenu && setMenu(menu.map(m => {
       if (m._id.secondCategory === secondCategory) {
@@ -54,7 +51,6 @@ export const Menu = (): JSX.Element => {
       <div className={styles.secondBlock}>
         {menu.map(m => {
           if (m.pages.map(p => p.alias).includes(router.asPath.split('/')[2])) {
-            console.log(m);
 						m.isOpened = true;
 					}
           return (

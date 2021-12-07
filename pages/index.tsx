@@ -6,7 +6,7 @@ import { withLayout } from '../layout/Layout';
 import { MenuItem } from '../interfaces/menu.interface';
 
 
-const Home = ({ menu }: HomeProps): JSX.Element => {
+const Home = (): JSX.Element => {
   const [rating, setRating] = React.useState(4);
 
   return (
@@ -22,9 +22,6 @@ const Home = ({ menu }: HomeProps): JSX.Element => {
       <Tag size='s' color='green'> Green </Tag>
       <Tag color='primary'> Primary </Tag>
       <Rating isEditable rating={rating} setRating={setRating} />
-      <ul>
-        {menu.map(m => <li key = {m._id.secondCategory}> {m._id.secondCategory} </li>)}
-      </ul>
     </>
   );
 };

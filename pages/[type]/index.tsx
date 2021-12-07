@@ -11,6 +11,8 @@ const Type = ({ firstCategory }: TypeProps): JSX.Element => {
   );
 };
 
+export default withLayout(Type);
+
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: firstLevelMenu.map(m => `/${m.route}`),
@@ -48,5 +50,3 @@ interface TypeProps extends Record<string, unknown> {
   menu: MenuItem[];
   firstCategory: number;
 }
-
-export default withLayout(Type);

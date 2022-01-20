@@ -6,15 +6,12 @@ import { MenuItem } from "../../interfaces/menu.interface";
 import { TopLevelCategory, TopPageModel } from "../../interfaces/page.interface";
 import { ProductModel } from "../../interfaces/product.interface";
 import { withLayout } from "../../layout/Layout";
+import { TopPageComponent } from "../../page-components";
 
 
 
-const Course = ({ products }: CourseProps) => {
-  return (
-    <>
-      {products && products.length}
-    </>
-  );
+const TopPage = ({ products, firstCategory, page }: TopPageProps) => {
+  return <TopPageComponent products = {products} firstCategory = {firstCategory} page = {page}/>;
 };
 
 
@@ -33,7 +30,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<CourseProps> = async ({ params }: GetStaticPropsContext<ParsedUrlQuery>) => {
+export const getStaticProps: GetStaticProps<TopPageProps> = async ({ params }: GetStaticPropsContext<ParsedUrlQuery>) => {
 
   if (!params) {
     return {
@@ -80,9 +77,9 @@ export const getStaticProps: GetStaticProps<CourseProps> = async ({ params }: Ge
 
 };
 
-export default withLayout(Course);
+export default withLayout(TopPage);
 
-interface CourseProps extends Record<string, unknown> {
+interface TopPageProps extends Record<string, unknown> {
   menu: MenuItem[];
   firstCategory: TopLevelCategory;
   page: TopPageModel;

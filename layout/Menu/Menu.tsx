@@ -22,8 +22,6 @@ export const Menu = (): JSX.Element => {
     }));
   };
 
-  console.log('FirstCategory', firstCategory);
-
   const buildFirstLevel = () => {
     return (
       <React.Fragment>

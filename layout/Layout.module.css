@@ -29,7 +29,7 @@
         grid-template-areas: "header" "body" "footer";
     }
     .sidebar {
-        display: none;
+        display: none !important;
     }
     .header {
         display: block;

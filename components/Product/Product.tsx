@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import { Button, Card, Divider, Rating, Tag, Review } from '..';
+import { Button, Card, Divider, Rating, Tag, Review, ReviewForm } from '..';
 import { ProductProps } from './Product.props';
 import styles from './Product.module.css';
 import { priceRU, declOfNum } from '../../helpers/helpers';
@@ -68,7 +68,13 @@ export const Product = ({ product, className }: ProductProps): JSX.Element => {
 				[styles.opened]: isReviewOpened,
 				[styles.closed]: !isReviewOpened,
 			})}>
-				{product.reviews.map(r => <Review key={r._id} review={r} />)}
+				{product.reviews.map(r => (
+					<>
+						<Review key={r._id} review={r} />
+						<Divider />
+						<ReviewForm productId={product._id} />
+					</>
+				))}
 			</Card>
 		</>
 

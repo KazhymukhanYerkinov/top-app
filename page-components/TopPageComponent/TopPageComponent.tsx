@@ -14,6 +14,10 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
 		dispatchSort({ type: sort });
 	};
 
+	React.useEffect(() => {
+		dispatchSort({ type: 'reset', initialState: products });
+	}, [products]);
+
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.title}>

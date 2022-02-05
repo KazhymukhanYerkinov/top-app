@@ -69,12 +69,12 @@ export const Product = ({ product, className }: ProductProps): JSX.Element => {
 				[styles.closed]: !isReviewOpened,
 			})}>
 				{product.reviews.map(r => (
-					<>
+					<React.Fragment key={r._id}>
 						<Review key={r._id} review={r} />
 						<Divider />
-						<ReviewForm productId={product._id} />
-					</>
+					</React.Fragment>
 				))}
+				<ReviewForm productId={product._id} />
 			</Card>
 		</>
 

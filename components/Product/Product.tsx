@@ -1,5 +1,4 @@
 import React from 'react';
-import cn from 'classnames';
 import { motion } from 'framer-motion';
 import { Button, Card, Divider, Rating, Tag, Review, ReviewForm } from '..';
 import { ProductProps } from './Product.props';
@@ -11,6 +10,11 @@ export const Product = motion(React.forwardRef(({ product, className, ...props }
 
 	const [isReviewOpened, setIsReviewOpened] = React.useState<boolean>(false);
 	const reviewRef = React.useRef<HTMLDivElement>(null);
+
+	const variants = {
+		visible: { opacity: 1, height: 'auto' },
+		hidden: { opacity: 0, height: 0 }
+	};
 
 	const scrollToReview = () => {
 		setIsReviewOpened(true);
@@ -74,18 +78,17 @@ export const Product = motion(React.forwardRef(({ product, className, ...props }
 						onClick={() => setIsReviewOpened(!isReviewOpened)}> Читать отзывы </Button>
 				</div>
 			</Card>
-			<Card color='blue' className={cn(styles.reviews, {
-				[styles.opened]: isReviewOpened,
-				[styles.closed]: !isReviewOpened,
-			})} ref={reviewRef}>
-				{product.reviews.map(r => (
-					<React.Fragment key={r._id}>
-						<Review key={r._id} review={r} />
-						<Divider />
-					</React.Fragment>
-				))}
-				<ReviewForm productId={product._id} />
-			</Card>
+			<motion.div animate={isReviewOpened ? 'visible' : 'hidden'} variants={variants} initial='hidden'>
+				<Card color='blue' className={styles.reviews} ref={reviewRef}>
+					{product.reviews.map(r => (
+						<React.Fragment key={r._id}>
+							<Review key={r._id} review={r} />
+							<Divider />
+						</React.Fragment>
+					))}
+					<ReviewForm productId={product._id} />
+				</Card>
+			</motion.div>
 		</div>
 
 

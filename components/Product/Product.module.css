@@ -136,23 +136,17 @@
     border-bottom: 1px dashed var(--gray-light);
 }
 
-.closed {
+.rateTitle a {
+    color: var(--primary);
+}
+
+.rateTitle a {
+    color: var(--primary);
+}
+
+.reviews {
     overflow: hidden;
-    max-height: 0;
-    padding: 0;
-}
-
-.opened {
-    max-height: auto;
     padding: 30px;
-}
-
-.rateTitle a {
-    color: var(--primary);
-}
-
-.rateTitle a {
-    color: var(--primary);
 }
 
 @media screen and (max-width: 1320px) {
